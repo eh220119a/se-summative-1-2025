@@ -33,14 +33,17 @@ My particular application has a bunch of different functionalities but there is 
     - Repeat the first step
     - Press the "Randomise and Save" button
     - Stand-Up Schedule should download to your default download location.
+
 **2. Load Stand-Up Schedule to Web Browser**
     - Press on the "Upload Names" button
     - Navigate to your default Download location
     - Input the file you just downloaded.
     - If there are no attendees in your csv file which you downloaded, the stand up schedule will say "No host assigned".
+
 **3. Viewing your stand-up schedule**
     - At the top of your browser, "Today's stand-up host:" should state the person who is due to host
     - To view the entire stand-up schedule scroll to below the "Upload Names" and "Stand-Up scheduler", your stand-up schedule should be displayed for the next fortnight.
+    
 ### Technical
 Install Dependencies:
 npm init -y
