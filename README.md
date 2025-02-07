@@ -124,3 +124,11 @@ Such as, the first user story which turned into:
 The following image shows the design prototype prior to developing the application which was built using 'Figma' in order to give clarity to how the application would look in regards to it's functionality.
 
 ![image](https://github.com/user-attachments/assets/9d5949c6-08cd-4517-9d6e-186c069af7db)
+
+### Project Management
+
+Once the planning and design phase was finalised, the focus shifted to structuring the development process. This was achieved through GitHub and GitHub Projects, which facilitated streamlined workflow management and efficient task tracking.
+
+#### Kanban and Ticket System
+In order to progress through the project I took advantage of GitHub Project's Kanban board system, using their issues to create a link between the project and Kanban.
+![alt text](image.png)
