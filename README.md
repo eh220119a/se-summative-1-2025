@@ -43,7 +43,13 @@ My particular application has a bunch of different functionalities but there is 
 **3. Viewing your stand-up schedule**
     - At the top of your browser, "Today's stand-up host:" should state the person who is due to host
     - To view the entire stand-up schedule scroll to below the "Upload Names" and "Stand-Up scheduler", your stand-up schedule should be displayed for the next fortnight.
-    
+**Application Example**
+1. Input the names: "Ben", "James", "Hannah", "Dan"
+2. Remove the certain days you wish
+3. Create your schedule by pressing the "Randomise and Save" button
+4. Load your schedule by pressing the "Upload Names" button
+5. Inspect the schedule and top banner for the expected names.
+
 ### Technical
 Install Dependencies:
 npm init -y
