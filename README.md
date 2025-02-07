@@ -155,8 +155,7 @@ Since the functions had not yet been implemented, running the Jest tests initial
 
 ![alt text](image-1.png)
 
-    Failure Output:
-
+Failure Output:
     ```
     FAIL  __tests__/getFormattedToday.test.js
   ● getFormattedToday › returns the correct formatted day with week number
