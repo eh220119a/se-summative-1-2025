@@ -135,3 +135,31 @@ In order to progress through the project I took advantage of GitHub Project's Ka
 ![alt text](image.png)
 
 In order to accurately follow through with the agile approach that I am most familiar with, I held two short reviews known as a "Sprint Review" in order to see where I was up to in regards to my workload. I found out due to the length of the project and the time allocated that I could only do a couple short sprints to get myself over the line, in order to stay in line with the 'Scrum' methodology. This is due to the fact of being a sole developer, having to manage every area of the software development lifecycle on my own without the usual supporting cast, is quite overwhelming and difficult. I managed to fit in one 'Sprint Retrospective' which allowed me to look at what I did well and what I did poorly in my sprints which allowed me to kick on and get this project over the line. 
+
+## Experimenting with Test-Driven Development (TDD) in the Project
+During the development of the stand-up picker application, I experimented with Test-Driven Development (TDD) to improve the reliability and maintainability of the code. The process involved writing tests before implementing the actual functionality, ensuring that the code met the specified requirements from the start.
+
+I began by defining test cases for key functions using Jest, a JavaScript testing framework. This included functions such as:
+
+   * getFormattedToday() – determining the current stand-up day within a two-week cycle.
+
+   * displayTodaysHost() – updating the notification bar with the correct stand-up host.
+
+   * processSchedule() – reading and displaying the correct stand-up schedule.
+
+Before implementing these functions, I wrote test cases outlining the expected outputs. For example, our test for getFormattedToday() ensured that given a fixed date, the function returned the correct formatted day with its corresponding week number.
+
+2. Running Tests & Watching Failures
+
+Since the functions had not yet been implemented, running the Jest tests initially resulted in failures. This step was crucial as it validated that the test cases correctly defined the expected behavior.
+
+![alt text](image-1.png)
+
+    Failure Output:
+
+    ```
+    FAIL  __tests__/getFormattedToday.test.js
+  ● getFormattedToday › returns the correct formatted day with week number
+    Expected: "Monday1"
+    Received: undefined
+   ```
