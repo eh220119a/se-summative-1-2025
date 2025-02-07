@@ -116,9 +116,11 @@ Due to the use of agile, strong user stories were created to give scope to a MVP
 
 The most important part about the 'User Stories', is that they allowed for division into smaller parts of the story, meaning developing the user story became about sufficing each bit of the acceptance critieria. 
 Such as, the first user story which turned into: 
+
 "Create the framework of the web application(HTML, CSS,JS)"; "Create the ability to view who is due to host stand-up"; "Finish off modernised styling for all functions of the website".
 
 
 ### Non-Functional Design Prototype for Application
 The following image shows the design prototype prior to developing the application which was built using 'Figma' in order to give clarity to how the application would look in regards to it's functionality.
+
 ![image](https://github.com/user-attachments/assets/9d5949c6-08cd-4517-9d6e-186c069af7db)
