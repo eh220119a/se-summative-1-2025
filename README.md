@@ -23,7 +23,7 @@ For Technicals:
 * System Architecture: An overview of the application's design and components.
 * Installation and Setup: Guidelines for setting up the development environment.
 * Testing: Information on the testing framework and how to run tests.
-### User
+### User Documentation
 My particular application has a bunch of different functionalities but there is three default steps if you do not have a presaved rotor. If you already have a rotor, the "Upcoming Stand-Up Schedule" will automatically display the first two weeks of the rotor, and display at the top of the screen who's day it is.
 
 **1. Add Team Members**
