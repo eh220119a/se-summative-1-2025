@@ -59,24 +59,38 @@ document.addEventListener("DOMContentLoaded", function() {
     function getFormattedTodayDate() {
       const today = new Date();
       const year = today.getFullYear();
-      const month = String(today.getMonth() + 1).padStart(2, '0'); // Months are zero-based
+      const month = String(today.getMonth() + 1).padStart(2, '0'); 
       const day = String(today.getDate()).padStart(2, '0');
       return `${year}-${month}-${day}`;
     }
   
-    // Function to determine today's host
-    function getTodaysHost() {
-      const schedule = {
-        "2025-02-07": "Alice",
-        "2025-02-08": "Bob",
-        "2025-02-09": "Charlie",
-      };
-  
-      const today = getFormattedTodayDate();
-      return schedule[today] || "No stand-up scheduled for today.";
+    
+    function fetchSchedule() {
+      fetch('data.csv')
+        .then(response => response.text())
+        .then(csvText => {
+          const data = Papa.parse(csvText, { header: true, dynamicTyping: true }).data;
+          displayTodaysHost(data);
+        })
+        .catch(error => {
+          console.error('Error fetching the CSV file:', error);
+          const notificationMessage = document.getElementById("notification-message");
+          notificationMessage.textContent = "Undefined schedule.";
+        });
     }
   
-    const notificationMessage = document.getElementById("notification-message");
-    notificationMessage.textContent = `Today's stand-up host: ${getTodaysHost()}`;
-  });
+    
+    function displayTodaysHost(schedule) {
+      const today = getFormattedTodayDate();
+      const todayEntry = schedule.find(entry => entry.date === today);
+      const notificationMessage = document.getElementById("notification-message");
+      if (todayEntry && todayEntry.host) {
+        notificationMessage.textContent = `Today's stand-up host: ${todayEntry.host}`;
+      } else {
+        notificationMessage.textContent = "No stand-up scheduled for today.";
+      }
+    }
   
+
+    fetchSchedule();
+  });
