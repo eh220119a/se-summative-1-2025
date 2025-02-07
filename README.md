@@ -75,8 +75,9 @@ My particular application has a bunch of different functionalities but there is 
    cd se-summative-1-2025
    ```
 2. Install Dependencies (If you want to use a server)
-       ```bash
+    ```bash
     npm install live-server
     live-server
-   ```
+    ```
+
 3. Else open 'index.html' in order to execute the application in the browser of your choice.
