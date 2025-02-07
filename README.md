@@ -49,7 +49,7 @@ My particular application has a bunch of different functionalities but there is 
 3. Create your schedule by pressing the "Randomise and Save" button
 4. Load your schedule by pressing the "Upload Names" button
 5. Inspect the schedule and top banner for the expected names.
-
+![Standup Scheduler](https://github.com/user-attachments/assets/7661539e-110d-4e5a-a090-636b1a395278)
 ### Technical
 Install Dependencies:
 npm init -y
