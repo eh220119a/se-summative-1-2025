@@ -162,4 +162,4 @@ Since the functions had not yet been implemented, running the Jest tests initial
   ● getFormattedToday › returns the correct formatted day with week number
     Expected: "Monday1"
     Received: undefined
-   ```
+    ```
