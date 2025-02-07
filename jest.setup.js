@@ -1,3 +1,4 @@
+
 global.localStorage = {
     getItem: jest.fn(() => null),
     setItem: jest.fn(),
@@ -6,6 +7,7 @@ global.localStorage = {
 };
 
 document.body.innerHTML = `
+    <input type="file" id="csvUpload">
     <div id="notification-message"></div>
     <div id="nameList"></div>
     <table>
@@ -13,4 +15,7 @@ document.body.innerHTML = `
         <tbody id="week2-hosts"></tbody>
     </table>
 `;
+
+
 document.addEventListener = jest.fn();
+document.getElementById = jest.fn((id) => document.querySelector(`#${id}`));
