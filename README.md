@@ -173,8 +173,7 @@ function getFormattedToday() {
     const isWeek1 = today.getDate() % 14 < 7;
     return `${weekday}${isWeek1 ? "1" : "2"}`;
 }
-```
-    After implementing this, I re-ran the tests and confirmed they passed
+```After implementing this, I re-ran the tests and confirmed they passed
 
 4. Refactoring & Improving the Code
 
