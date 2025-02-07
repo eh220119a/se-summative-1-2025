@@ -20,9 +20,15 @@
     <h2 id="hostDisplay">Today's Host: Not Picked Yet</h2>
     <button onclick="getTodayHost()">Pick Host</button>
 
-    <label for="blacklist">Blacklist Days:</label>
-    <input type="text" id="blacklist" placeholder="e.g., Monday, Friday">
-    <button onclick="updateBlacklist()">Save</button>
+    <div class="blacklist-container">
+        <h3>Manage Blacklisted Days</h3>
+        <input type="text" id="blacklistInput" placeholder="Enter day (e.g., Monday)">
+        <button onclick="updateBlacklist()">Add to Blacklist</button>
+        <ul id="blacklistDays"></ul>
+    
+        <h4>Upload Blacklist File</h4>
+        <input type="file" id="blacklistUpload" accept=".csv">
+    </div>
     
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
@@ -33,12 +39,19 @@
         <table id="schedule-table">
             <thead>
                 <tr>
-                    <th>Date</th>
-                    <th>Host</th>
+                    <th>Monday</th>
+                    <th>Tuesday</th>
+                    <th>Wednesday</th>
+                    <th>Thursday</th>
+                    <th>Friday</th>
+                    <th>Saturday</th>
+                    <th>Sunday</th>
                 </tr>
             </thead>
             <tbody>
-                
+                <tr id="week-hosts">
+
+                </tr>
             </tbody>
         </table>
     </div>

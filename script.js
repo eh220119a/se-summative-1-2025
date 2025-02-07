@@ -1,34 +1,87 @@
 let storedNames = [];
 let pickHistory = [];
-let blacklist = {};
+let globalBlacklist = JSON.parse(localStorage.getItem("globalBlacklist")) || []; // Use localStorage fallback
 
 document.addEventListener("DOMContentLoaded", function () {
-    const fileInput = document.getElementById("csvUpload");
     const notificationMessage = document.getElementById("notification-message");
+    const weekHostsRow = document.getElementById("week-hosts");
 
-    // Function to get today's date in YYYY-MM-DD format
-    function getFormattedTodayDate() {
-        const today = new Date();
-        const year = today.getFullYear();
-        const month = String(today.getMonth() + 1).padStart(2, '0');
-        const day = String(today.getDate()).padStart(2, '0');
-        return `${year}-${month}-${day}`;
+    function getFormattedDate(daysAhead = 0) {
+        const date = new Date();
+        date.setDate(date.getDate() + daysAhead);
+        return date.toISOString().split("T")[0]; // Format YYYY-MM-DD
     }
 
-    // Fetch and parse the CSV file from local-server
-    function fetchSchedule() {
-        fetch("data.csv") // Fetch from the same folder
-            .then(response => response.text())
+    function getDayOfWeek(daysAhead = 0) {
+        const date = new Date();
+        date.setDate(date.getDate() + daysAhead);
+        return date.toLocaleString("en-us", { weekday: "long" });
+    }
+
+    function displayTodaysHost(schedule) {
+        const today = getFormattedDate();
+        const todayEntry = schedule.find(entry => entry.date && entry.date.trim() === today);
+    
+        console.log("Today's Date:", today);
+        console.log("Today’s Entry:", todayEntry);
+    
+        if (todayEntry && todayEntry.host) {
+            notificationMessage.textContent = `Today's stand-up host: ${todayEntry.host}`;
+        } else {
+            notificationMessage.textContent = "No stand-up scheduled for today.";
+        }
+    }
+    
+
+    function fetchBlacklist() {
+        notificationMessage.textContent = "Loading blacklist..."; // Show loading message
+    
+        fetch("blacklist.csv")
+            .then(response => {
+                if (!response.ok) {
+                    console.warn("Blacklist file not found. Using localStorage.");
+                    return Promise.reject("Blacklist file missing.");
+                }
+                return response.text();
+            })
             .then(csvText => {
-                console.log("Fetched CSV:", csvText); // Debugging output
-
-                const data = Papa.parse(csvText, { 
-                    header: true, 
+                const data = Papa.parse(csvText, { header: true, skipEmptyLines: true }).data;
+                globalBlacklist = data.map(entry => entry.day.trim());
+                localStorage.setItem("globalBlacklist", JSON.stringify(globalBlacklist)); // Save to localStorage
+                console.log("Global Blacklist:", globalBlacklist);
+                notificationMessage.textContent = "Blacklist Loaded Successfully!";
+                fetchSchedule();
+            })
+            .catch(error => {
+                console.error("Error loading blacklist:", error);
+                notificationMessage.textContent = "Error loading blacklist.";
+                fetchSchedule(); // Proceed with fetching schedule even if blacklist is missing
+            });
+    }
+    function fetchSchedule() {
+        notificationMessage.textContent = "Loading..."; 
+    
+        fetch("data.csv")
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Failed to load data.csv");
+                }
+                return response.text();
+            })
+            .then(csvText => {
+                const data = Papa.parse(csvText, {
+                    header: true,
                     dynamicTyping: true,
-                    skipEmptyLines: true
+                    skipEmptyLines: true,
                 }).data;
-
-                displayTodaysHost(data);
+    
+                if (typeof displayTodaysHost === "function") {
+                    displayTodaysHost(data);
+                } else {
+                    console.error("displayTodaysHost function is missing.");
+                }
+    
+                displayWeekSchedule(data);
             })
             .catch(error => {
                 console.error("Error fetching CSV:", error);
@@ -36,90 +89,66 @@ document.addEventListener("DOMContentLoaded", function () {
             });
     }
 
-    // Function to read and process manually uploaded CSV file
-    function loadCSV(event) {
-        const file = event.target.files[0];
-        if (!file) {
-            notificationMessage.textContent = "No file selected.";
-            return;
+    function displayWeekSchedule(schedule) {
+        weekHostsRow.innerHTML = "";
+
+        for (let i = 0; i < 7; i++) {
+            const date = getFormattedDate(i);
+            const weekday = getDayOfWeek(i);
+
+            if (globalBlacklist.includes(weekday)) {
+                const cell = document.createElement("td");
+                cell.innerHTML = `<span style="color: red;">Blacklisted</span>`;
+                weekHostsRow.appendChild(cell);
+                continue;
+            }
+
+            const entry = schedule.find(row => row.date.trim() === date);
+            const host = entry ? entry.host : "No host assigned";
+
+            const cell = document.createElement("td");
+            cell.textContent = host;
+            weekHostsRow.appendChild(cell);
         }
-
-        const reader = new FileReader();
-        reader.onload = function (e) {
-            const csvText = e.target.result;
-            console.log("Uploaded CSV:", csvText); // Debugging output
-
-            // Parse CSV file
-            const data = Papa.parse(csvText, { 
-                header: true, 
-                dynamicTyping: true, 
-                skipEmptyLines: true 
-            }).data;
-
-            // Display today's host from uploaded CSV
-            displayTodaysHost(data);
-        };
-
-        reader.readAsText(file);
     }
 
-    // Function to display today's stand-up host
-    function displayTodaysHost(schedule) {
-        const today = getFormattedTodayDate();
-        console.log("Today's Date:", today);
-        console.log("Schedule Data:", schedule);
+    function updateBlacklist() {
+        const blacklistInput = document.getElementById("blacklistInput").value.trim();
+        if (!blacklistInput) return;
 
-        const todayEntry = schedule.find(entry => entry.date.trim() === today);
-
-        if (todayEntry && todayEntry.host) {
-            notificationMessage.textContent = `Today's stand-up host: ${todayEntry.host}`;
+        if (!globalBlacklist.includes(blacklistInput)) {
+            globalBlacklist.push(blacklistInput);
+            localStorage.setItem("globalBlacklist", JSON.stringify(globalBlacklist));
+            saveBlacklistToFile();
+            displayBlacklist();
         } else {
-            notificationMessage.textContent = "No stand-up scheduled for today.";
+            alert("This day is already blacklisted.");
         }
     }
 
-    // Listen for file uploads
-    fileInput.addEventListener("change", loadCSV);
+    function saveBlacklistToFile() {
+        let csvContent = "day\n" + globalBlacklist.join("\n");
+        const blob = new Blob([csvContent], { type: "text/csv" });
+        const url = URL.createObjectURL(blob);
 
-    // Fetch the CSV automatically on page load
-    fetchSchedule();
-});
-
-// ---------- Existing Functions for Stand-up Selection ----------
-function parseCSV(csvText) {
-    let rows = csvText.split("\n");
-    return rows.map(row => {
-        let [name, days] = row.split(",");
-        return { name: name.trim(), blacklist: days ? days.trim().split(" ") : [] };
-    });
-}
-
-function getTodayHost() {
-    let today = new Date();
-    let dayName = today.toLocaleString('en-us', { weekday: 'long' });
-
-    let selectedHost = pickHost(storedNames, pickHistory, dayName);
-    document.getElementById("hostDisplay").innerText = `Today's Host: ${selectedHost}`;
-}
-
-function pickHost(names, history, currentDay) {
-    let eligible = names.filter(person => !person.blacklist.includes(currentDay));
-    let remaining = eligible.filter(p => !history.includes(p.name));
-
-    if (remaining.length === 0) {
-        history.length = 0;
-        remaining = eligible;
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "blacklist.csv";
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
     }
 
-    let chosen = remaining[Math.floor(Math.random() * remaining.length)];
-    history.push(chosen.name);
-    return chosen.name;
-}
+    function displayBlacklist() {
+        const blacklistList = document.getElementById("blacklistDays");
+        blacklistList.innerHTML = "";
+        
+        globalBlacklist.forEach(day => {
+            const li = document.createElement("li");
+            li.textContent = day;
+            blacklistList.appendChild(li);
+        });
+    }
 
-function updateBlacklist() {
-    let blacklistInput = document.getElementById("blacklist").value;
-    let days = blacklistInput.split(",").map(day => day.trim());
-
-    localStorage.setItem("blacklist", JSON.stringify(days));
-    alert("Blacklist updated!");
-}
+    fetchBlacklist();
+});
