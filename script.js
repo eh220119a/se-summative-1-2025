@@ -53,3 +53,30 @@ function updateBlacklist() {
     localStorage.setItem("blacklist", JSON.stringify(days));
     alert("Blacklist updated!");
 }
+
+document.addEventListener("DOMContentLoaded", function() {
+    // Function to get today's date in YYYY-MM-DD format
+    function getFormattedTodayDate() {
+      const today = new Date();
+      const year = today.getFullYear();
+      const month = String(today.getMonth() + 1).padStart(2, '0'); // Months are zero-based
+      const day = String(today.getDate()).padStart(2, '0');
+      return `${year}-${month}-${day}`;
+    }
+  
+    // Function to determine today's host
+    function getTodaysHost() {
+      const schedule = {
+        "2025-02-07": "Alice",
+        "2025-02-08": "Bob",
+        "2025-02-09": "Charlie",
+      };
+  
+      const today = getFormattedTodayDate();
+      return schedule[today] || "No stand-up scheduled for today.";
+    }
+  
+    const notificationMessage = document.getElementById("notification-message");
+    notificationMessage.textContent = `Today's stand-up host: ${getTodaysHost()}`;
+  });
+  
