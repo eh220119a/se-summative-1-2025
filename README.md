@@ -110,7 +110,7 @@ Due to the use of agile, strong user stories were created to give scope to a MVP
 
 * "As an Admin, I want to upload a CSV file to update the schedule, I want to upload a CSV file containing the updated stand-up schedule so that I can modify the rota without manual entry."
 
-* "As an Admin, I want to randomize and save a fair schedule, I want to generate a balanced two-week stand-up schedule, ensuring that no team member is overloaded and the schedule is fair."
+* "As an Admin, I want to randomise and save a fair schedule, I want to generate a balanced two-week stand-up schedule, ensuring that no team member is overloaded and the schedule is fair."
 
 * "As a Team Member, I want to view the full two-week schedule, I want to see a structured table displaying the upcoming two-week stand-up schedule, so I know who is hosting each day."
 
@@ -131,4 +131,7 @@ Once the planning and design phase was finalised, the focus shifted to structuri
 
 #### Kanban and Ticket System
 In order to progress through the project I took advantage of GitHub Project's Kanban board system, using their issues to create a link between the project and Kanban.
+
 ![alt text](image.png)
+
+In order to accurately follow through with the agile approach that I am most familiar with, I held two short reviews known as a "Sprint Review" in order to see where I was up to in regards to my workload. I found out due to the length of the project and the time allocated that I could only do a couple short sprints to get myself over the line, in order to stay in line with the 'Scrum' methodology. This is due to the fact of being a sole developer, having to manage every area of the software development lifecycle on my own without the usual supporting cast, is quite overwhelming and difficult. I managed to fit in one 'Sprint Retrospective' which allowed me to look at what I did well and what I did poorly in my sprints which allowed me to kick on and get this project over the line. 
