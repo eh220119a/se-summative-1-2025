@@ -49,8 +49,23 @@ My particular application has a bunch of different functionalities but there is 
 3. Create your schedule by pressing the "Randomise and Save" button
 4. Load your schedule by pressing the "Upload Names" button
 5. Inspect the schedule and top banner for the expected names.
+
 ![Standup Scheduler](https://github.com/user-attachments/assets/7661539e-110d-4e5a-a090-636b1a395278)
-### Technical
+
+### Technical Documentation
+
+
+| File/Folder          | Reason                                                        |
+|----------------------|-----------------------------------------------------------------|
+| **index.html**       | Default HTML webpage, contains the sections for "Today's stand up host", "Upload Names", "Stand-Up Scheduler" and the "Upcoming Stand-Up Schedule" |
+| **style.css**        | Cascading Style Sheet for the application  |
+| **script.js**        | Contains all of the logic for the application to make features such as randomisation, saving of files work etc.  |
+| **\_\_tests\_\_/**   | Test scripts for [Jest](https://jestjs.io/)  are all stored within this                           |
+| **package.json**     | Lists the dependencies needed to make the program run                |
+| **package-lock.json**| Ensures consistent dependencies by locking specific versions    |
+| **.node_modules**         | Contains all the modules required by Node.Js to save extra installation               |
+
+
 Install Dependencies:
 npm init -y
 npm install express fs path cors
