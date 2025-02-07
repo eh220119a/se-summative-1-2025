@@ -114,5 +114,5 @@ Due to the use of agile, strong user stories were created to give scope to a MVP
 
 * "As a Team Member, I want to view the full two-week schedule, I want to see a structured table displaying the upcoming two-week stand-up schedule, so I know who is hosting each day."
 
-The most important part about the User Stories, is that they allowed for division into smaller parts of the story, meaning developing the user story became about sufficing each bit of the acceptance critieria. 
+The most important part about the 'User Stories', is that they allowed for division into smaller parts of the story, meaning developing the user story became about sufficing each bit of the acceptance critieria. 
 Such as, the first user story which turned into: "Create the framework of the web application(HTML, CSS,JS)"; "Create the ability to view who is due to host stand-up"; "Finish off modernised styling for all functions of the website".
