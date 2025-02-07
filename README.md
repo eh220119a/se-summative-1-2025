@@ -102,3 +102,5 @@ Sample Test - `displayTodaysHost.test.js` returns correct for who should be on t
 - There is not much error handling whatsoever (ie: filtering out duplicate names)
 - There is no current ability to autosave the schedule to the server, only via uploading to local storage.
 
+## Design and Development Process
+In order for a successful project, a carefully designed software application was needed to be created so that the development of the application would move swiftly and smoothly, for this to be acheived the planning phase must have captured the target audiences needs and appropriately mapped them to the software's design.
