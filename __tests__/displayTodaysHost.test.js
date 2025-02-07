@@ -1,21 +1,27 @@
-
 const { displayTodaysHost } = require("../script");
 
 describe("displayTodaysHost", () => {
-    beforeEach(() => {
+    let notificationMessage;
+
+    beforeAll(() => {
         document.body.innerHTML = `<div id="notification-message"></div>`;
+        notificationMessage = document.getElementById("notification-message");
+
+        jest.useFakeTimers();
+        jest.setSystemTime(new Date("2024-02-05")); // Mocking a Monday
+    });
+
+    afterAll(() => {
+        jest.useRealTimers();
     });
 
     test("updates notification with today's host", () => {
         const schedule = [
             { day: "Monday1", host: "Alice" },
-            { day: "Tuesday1", host: "Bob" },
+            { day: "Tuesday1", host: "Bob" }
         ];
 
-        jest.spyOn(global, "Date").mockImplementation(() => new Date("2024-02-05"));
         displayTodaysHost(schedule);
-
-        expect(document.getElementById("notification-message").textContent).toBe("Today's stand-up host: Alice");
-        jest.restoreAllMocks();
+        expect(notificationMessage.textContent).toBe("Today's stand-up host: Alice");
     });
 });
