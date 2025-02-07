@@ -18,6 +18,7 @@ The User and Technical Documentation section provides comprehensive guidance for
 For Users:
 *   Features Overview: Detailed descriptions of the application's functionalities.
 *   Design
+
 For Technicals:
 * System Architecture: An overview of the application's design and components.
 * Installation and Setup: Guidelines for setting up the development environment.
