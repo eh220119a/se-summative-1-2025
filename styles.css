@@ -1,56 +1,110 @@
-
+/* General Page Styling */
 body {
     font-family: Arial, sans-serif;
     text-align: center;
-    padding: 20px;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
 }
 
-button {
-    margin: 10px;
+/* Notification Bar */
+#notification-bar {
+    background-color: #f8d7da;
+    color: #721c24;
     padding: 10px;
-    background-color: blue;
+    text-align: center;
+    font-weight: bold;
+    border-bottom: 2px solid #f5c6cb;
+}
+
+/* Header Styling */
+h1 {
+    margin-top: 20px;
+    color: #343a40;
+    font-size: 28px;
+}
+
+/* Button Styling */
+button {
+    background-color: #007bff;
     color: white;
     border: none;
+    padding: 8px 15px;
+    font-size: 16px;
     cursor: pointer;
+    margin: 5px;
+    border-radius: 5px;
+    transition: 0.3s;
 }
 
 button:hover {
-    background-color: darkblue;
+    background-color: #0056b3;
 }
 
-.notification {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: #f8d7da;
-    color: #721c24;
-    text-align: center;
-    padding: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-  }
-  .table-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 20px;
+/* Section Containers */
+.section-container {
+    width: 80%;
+    max-width: 800px;
+    margin: 20px auto;
+    background: white;
+    padding: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+/* Upload Names Section */
+#upload-section {
+    background-color: #e3f2fd;
+    border-left: 5px solid #007bff;
+}
+
+/* Stand-Up Scheduler Section */
+#scheduler-section {
+    background-color: #f1f8e9;
+    border-left: 5px solid #28a745;
+}
+
+/* Name Input Field */
+input[type="text"] {
+    padding: 8px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    width: 60%;
+    margin: 5px 0;
+}
+
+/* Table Styling */
+.table-container {
+    width: 90%;
+    margin: 20px auto;
 }
 
 table {
-    width: 60%;
+    width: 100%;
     border-collapse: collapse;
-    margin-top: 10px;
+    background: white;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
 }
 
 th, td {
-    border: 1px solid black;
-    padding: 10px;
+    border: 1px solid #dee2e6;
+    padding: 12px;
     text-align: center;
-    width: 14.2%;
 }
 
 th {
-    background-color: #ddd;
-    font-weight: bold;
+    background-color: #343a40;
+    color: white;
+    font-size: 16px;
+}
+
+tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+/* Checkbox Styling */
+input[type="checkbox"] {
+    margin-left: 5px;
 }
