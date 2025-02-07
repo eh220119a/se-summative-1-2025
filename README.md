@@ -81,3 +81,24 @@ My particular application has a bunch of different functionalities but there is 
     ```
 
 3. Else open 'index.html' in order to execute the application in the browser of your choice.
+
+### Testing Process
+ **[Jest](https://jestjs.io/)** has been utilised for testing the logic in `script.js`. The tests used are housed in `__tests__`:
+1. Install Jest (must have [Node.js](https://nodejs.org/en/download) installed):
+
+   ```bash
+   npm install --save-dev jest
+   ```
+
+2. Run Tests:
+
+   ```bash
+   npm test
+   ```
+
+Sample Test - `displayTodaysHost.test.js` returns correct for who should be on testing duties based upon a forced value.
+
+## Current issues with the Application
+- There is not much error handling whatsoever (ie: filtering out duplicate names)
+- There is no current ability to autosave the schedule to the server, only via uploading to local storage.
+
