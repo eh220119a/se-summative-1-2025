@@ -139,7 +139,7 @@ In order to accurately follow through with the agile approach that I am most fam
 ## Experimenting with Test-Driven Development (TDD) in the Project
 During the development of the stand-up picker application, I experimented with Test-Driven Development (TDD) to improve the reliability and maintainability of the code. The process involved writing tests before implementing the actual functionality, ensuring that the code met the specified requirements from the start.
 
-I began by defining test cases for key functions using Jest, a JavaScript testing framework. This included functions such as:
+1. I began by defining test cases for key functions using Jest, a JavaScript testing framework. This included functions such as:
 
    * getFormattedToday() – determining the current stand-up day within a two-week cycle.
 
@@ -156,13 +156,13 @@ Since the functions had not yet been implemented, running the Jest tests initial
 ![alt text](image-1.png)
 
 Failure Output:
-    ```
+```
     FAIL  __tests__/getFormattedToday.test.js
   ● getFormattedToday › returns the correct formatted day with week number
     Expected: "Monday1"
     Received: undefined
-    ```
-Implementing the Minimal Code to Pass the Tests
+```
+3. Implementing the Minimal Code to Pass the Tests
 After confirming test failures, I implemented the minimal amount of code required to make the tests pass. This helped us focus only on necessary functionality rather than writing unnecessary or overly complex code.
 ```
 function getFormattedToday() {
@@ -175,3 +175,9 @@ function getFormattedToday() {
 ```
 
 After implementing this, I re-ran the tests and confirmed they passed.
+
+4. Refactoring & Improving the Code
+
+Once a test passed, I refactored the code while ensuring all tests continued to pass. This allowed us to optimize performance and maintain readability without breaking functionality.
+
+For instance, after our processSchedule() function initially passed, I refined its logic to handle edge cases, such as an empty CSV file or missing host names.
