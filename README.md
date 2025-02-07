@@ -3,9 +3,19 @@ A basic application for those working with daily meetings to track and manage wh
 ## Contents
 1. [Reasoning for Application](#reasoning-for-application)
 2. [User and Technical Documentation](#user-and-Technical-documentation)
+    - [User Documentation](#user-documentation)
+    - [Technical Documentation](#technical-documentation)
+        - [Installation on Local Machine](#Installation-on-your-machine-and-setup-process)
+        - [Testing Process](#testing-process)
+        - [Current issues with the Application](#current-issues-with-the-application)
 3. [Design and Development Process](#development-and-design-process)
+    - [User Stories](#user-stories)
+    - [Non-Functional Design Prototype for Application](#non-functional-design-prototype-for-application)
+    - [Project Management](#project-management)
+        - [Kanban and Ticket System](#kanban-and-ticket-system)
 4. [Experimenting with Test-Driven Development (TDD) in the Project](#Experimenting-with-Test-Driven-Development-TDD-in-the-Project)
-5. [Evaluation of Project](#evaluation-of-project)
+5. [Evaluation of Project](#project-evaluation)
+
 ## Reasoning for Application
 Within the Agile development workspace, teams are usually reliant on repeated daily stand-ups to demonstrate what the team has been working on in the past 24 hours, what is hindering their progress or acting as a blocker, whilst also communicating what is planned to do moving forward. Within our team as we work within the Agile 'Scrum' methodology, we used to have a reliance on a 'scrum-master' who would handle
 responsibilites such as organising and handling these short daily sessions but due to organisational shape up we no longer have someone to handle the responsibility of these stand-ups, as we still have not found a replacement scrum-master. 
@@ -16,11 +26,11 @@ Beforehand, we as a team selected stand-up facilitators on an ad-hoc basis, ofte
 ## User and Technical Documentation 
 The User and Technical Documentation section provides comprehensive guidance for both end-users and developers. It ensures that users can effectively utilise the application, while developers can understand its architecture and contribute to its development.
 
-For Users:
+#### For Users:
 *   Features Overview: Detailed descriptions of the application's functionalities.
 *   Design
 
-For Technicals:
+#### For Technicals:
 * System Architecture: An overview of the application's design and components.
 * Installation and Setup: Guidelines for setting up the development environment.
 * Testing: Information on the testing framework and how to run tests.
