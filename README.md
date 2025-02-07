@@ -63,9 +63,20 @@ My particular application has a bunch of different functionalities but there is 
 | **\_\_tests\_\_/**   | Test scripts for [Jest](https://jestjs.io/)  are all stored within this                           |
 | **package.json**     | Lists the dependencies needed to make the program run                |
 | **package-lock.json**| Ensures consistent dependencies by locking specific versions    |
-| **.node_modules**         | Contains all the modules required by Node.Js to save extra installation               |
+| **\_\.node_modules\_\_**         | Contains all the modules required by Node.Js to save extra installation               |
+| **jest.config.js** | Contains the passthrough for the Jest Testing suite as the main program isn't reliant on Node |
+| **jest.setup.js**  | Contains the variables that Jest will use that aren't accessible with node as the program relies on web browser |
 
+### Installation on your machine and setup process 
+1. Clone this repository:
 
-Install Dependencies:
-npm init -y
-npm install express fs path cors
+   ```bash
+   git clone https://github.com/eh220119a/se-summative-1-2025.git
+   cd se-summative-1-2025
+   ```
+2. Install Dependencies (If you want to use a server)
+       ```bash
+    npm install live-server
+    live-server
+   ```
+3. Else open 'index.html' in order to execute the application in the browser of your choice.
