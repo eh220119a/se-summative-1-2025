@@ -162,8 +162,9 @@ Failure Output:
     Expected: "Monday1"
     Received: undefined
 ```
-3. Implementing the Minimal Code to Pass the Tests
-After confirming test failures, I implemented the minimal amount of code required to make the tests pass. This helped us focus only on necessary functionality rather than writing unnecessary or overly complex code.
+3. Implementing the Minimal Code to Pass the 
+
+    After confirming test failures, I implemented the minimal amount of code required to make the tests pass. This helped us focus only on necessary functionality rather than writing unnecessary or overly complex code.
 ```
 function getFormattedToday() {
     const today = new Date();
@@ -173,9 +174,9 @@ function getFormattedToday() {
     return `${weekday}${isWeek1 ? "1" : "2"}`;
 }
 ```
-After implementing this, I re-ran the tests and confirmed they passed
+    After implementing this, I re-ran the tests and confirmed they passed
 
 4. Refactoring & Improving the Code
-Once a test passed, I refactored the code while ensuring all tests continued to pass. This allowed us to optimize performance and maintain readability without breaking functionality.
 
-For instance, after our processSchedule() function initially passed, I refined its logic to handle edge cases, such as an empty CSV file or missing host names.
+    Once a test passed, I refactored the code while ensuring all tests continued to pass. This allowed us to optimize performance and maintain readability without breaking functionality.
+    For instance, after our processSchedule() function initially passed, I refined its logic to handle edge cases, such as an empty CSV file or missing host names.
