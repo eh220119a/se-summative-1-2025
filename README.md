@@ -162,3 +162,16 @@ Failure Output:
     Expected: "Monday1"
     Received: undefined
     ```
+Implementing the Minimal Code to Pass the Tests
+After confirming test failures, I implemented the minimal amount of code required to make the tests pass. This helped us focus only on necessary functionality rather than writing unnecessary or overly complex code.
+```
+function getFormattedToday() {
+    const today = new Date();
+    const dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    const weekday = dayNames[today.getDay()];
+    const isWeek1 = today.getDate() % 14 < 7;
+    return `${weekday}${isWeek1 ? "1" : "2"}`;
+}
+```
+
+After implementing this, I re-ran the tests and confirmed they passed.
